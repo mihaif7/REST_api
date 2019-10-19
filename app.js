@@ -8,6 +8,7 @@ const app = express();
 // Routing
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
+const userRoutes = require('./api/routes/user');
 
 mongoose.connect('mongodb+srv://restapp:' + process.env.mongo_pw + '@cluster0-de1om.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
@@ -41,6 +42,7 @@ app.use((req, res, next) => {
 // Routes for handling request
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
+app.use('/user', userRoutes);
 
 
 // Error handling
