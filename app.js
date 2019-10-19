@@ -14,12 +14,15 @@ mongoose.connect('mongodb+srv://restapp:' + process.env.mongo_pw + '@cluster0-de
     useUnifiedTopology: true
 });
 
+
 // Middleware
 app.use(morgan('dev'));
+app.use('/uploads', express.static('uploads'))
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
+
 
 // CORS
 app.use((req, res, next) => {
@@ -33,6 +36,7 @@ app.use((req, res, next) => {
     }
     next();
 })
+
 
 // Routes for handling request
 app.use('/products', productRoutes);
